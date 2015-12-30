@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+   int T;
+   cin>>T;
+   long int N;
+   for(int i=1; i<=T; i++)
+   {
+      cin>>N;
+      cout<<floor(N)<<endl;
+   }
+
+   return 0;
+}

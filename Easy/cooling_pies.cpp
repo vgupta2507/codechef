@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+void insert_sort(int array[], int size);
+void swap(int *x, int *y);
+
+int main()
+{
+   int pies[100], racks[100], rack_ptr, pie_ptr, pies_placed;
+   int T;
+   cin>>T;
+   int N;
+   for(int i=0; i<T; i++)
+   {
+      cin>>N;
+      for(int a=0; a<N; a++)
+      {
+         cin>>pies[a];
+      }
+      for(int b=0; b<N; b++)
+      {
+         cin>>racks[b];
+      }
+      insert_sort(pies, N);
+      insert_sort(racks, N);
+      
+      rack_ptr=0; pie_ptr=0; pies_placed=0;
+      for(int j=0; j<N; j++)
+      {
+         if(pies[pie_ptr] <= racks[rack_ptr])
+         {
+            rack_ptr++;
+            pies_placed++;
+         }
+         else
+         {
+            //Do nothing
+         }
+         pie_ptr++;  //pie_ptr is same as j, but I think this way makes more sense.
+      }
+      cout<<pies_placed<<endl;
+   }
+   
+   
+   return 0;
+}
+
+void insert_sort(int array[], int size)
+{
+   for(int i=1; i<size; i++)
+   {
+      for(int j=i; j>0; j--)
+      {
+         if(array[j]>array[j-1])
+         {
+            swap(array[j], array[j-1]);
+         }
+         else
+         {
+            break;
+         }
+      }
+   }
+}
+
+void swap(int *x, int *y)
+{
+   int temp = *x;
+   *x = *y;
+   *y = temp;
+}
